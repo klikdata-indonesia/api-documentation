@@ -38,28 +38,37 @@ definitions:
   CreatePasien:
     title: Pasien
     example:
+      nama: "KHAIRIL ANWAR"
+      no_mr: "001234"
+      no_mr_lama: "-"
       nik: '1272072906910002'
       no_kk: "-"
-      nama: MUHAMMAD FADHLULLAH
       jenis_kelamin: 1
       tanggal_lahir: '1991-06-29 17:00:00'
       tempat_lahir: Tapaktuan
       gol_darah: O
-      provinsi:
-        kode: 11
-        nama: ACEH
-      kabupaten:
-        kode: 1112
-        nama: ACEH BARAT DAYA
-      kecamatan:
-        kode: 111204
-        nama: SUSOH
-      desa:
-        kode: 111204007
-        nama: RUMAH DUA LAPIS
-      alamat: dsn pusaka
-      no_hp: '082290012005'
+      suku: GORONTALO
+      bahasa: INDONESIA
+      id_prov: 75
+      id_kabkota: 7502
+      id_kecamatan: 750211
+      id_desa: 750238827
+      alamat: "Jl. Arif Rahman Hakim"
+      kdpos: 86524
+      negara: INDONESIA
+      id_provd: 75
+      id_kabkotad: 7502
+      id_kecamatand: 750211
+      id_desad: 750238827
+      alamatd: "Jl. Arif Rahman Hakim"
+      kdposd: 86524
+      negarad: INDONESIA
+      tlp_rumah: "+620435787878"
+      id_jpdd: S1
+      id_pekerjaan: 1022
+      no_hp: "+6282290012005"
       email: zulfahmii051@gmail.com
+      nama_ibu: "WARNI BILONDATU"
     type: object
     properties:
       nik:
@@ -92,9 +101,9 @@ definitions:
       email:
         type: string
     required:
+    - nama
     - nik
     - no_kk
-    - nama
     - jenis_kelamin
     - tanggal_lahir
     - tempat_lahir
