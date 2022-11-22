@@ -1,38 +1,172 @@
 ---
-swagger: "2.0"
+swagger: '2.0'
 info:
-  description: "This is a sample server Petstore server.  You can find out more about\
-    \ Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).\
-    \  For this sample, you can use the api key `special-key` to test the authorization\
-    \ filters."
-  version: "0.0.1"
-  title: "Dokumentasi API klikmedic"
-  termsOfService: "http://swagger.io/terms/"
-  contact:
-    email: "apiteam@swagger.io"
-  license:
-    name: "Apache 2.0"
-    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "petstore.swagger.io"
-basePath: "/v1"
-tags:
-- name: "Pasien"
-  description: "Service Pasien"
-  
-- name: "Wilayah"
-  description: "Service Wilayah"
-- name: "Agama"
-  description: ""
-- name: "Pendikan"
-  description: ""
-- name: "Ruangan"
-  description: ""
-
+  description: Documentasi API Service Klik-Pasien For RS Data Master
+  version: '1.0'
+  title: API Service KLIKMEDIC
+host: petstore.swagger.io
 schemes:
-- "https"
-- "http"
+- http
+- https
 paths:
- 
-externalDocs:
-  description: "Find out more about Swagger"
-  url: "http://swagger.io"
+  "/pasien":
+    post:
+      summary: Create Data Pasien
+      tags:
+      - Pasien
+      operationId: CreatedPasien
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          "$ref": "#/definitions/CreatePasien"
+      responses:
+        '200':
+          description: ''
+          headers: {}
+definitions:
+  CreatePasien:
+    title: Pasien
+    example:
+      nik: '1272072906910002'
+      no_kk: "-"
+      nama: MUHAMMAD FADHLULLAH
+      jenis_kelamin: 1
+      tanggal_lahir: '1991-06-29 17:00:00'
+      tempat_lahir: Tapaktuan
+      gol_darah: O
+      provinsi:
+        kode: 11
+        nama: ACEH
+      kabupaten:
+        kode: 1112
+        nama: ACEH BARAT DAYA
+      kecamatan:
+        kode: 111204
+        nama: SUSOH
+      desa:
+        kode: 111204007
+        nama: RUMAH DUA LAPIS
+      alamat: dsn pusaka
+      no_hp: '082290012005'
+      email: zulfahmii051@gmail.com
+    type: object
+    properties:
+      nik:
+        type: string
+      no_kk:
+        type: string
+      nama:
+        type: string
+      jenis_kelamin:
+        type: integer
+        format: int32
+      tanggal_lahir:
+        type: string
+      tempat_lahir:
+        type: string
+      gol_darah:
+        type: string
+      provinsi:
+        "$ref": "#/definitions/Provinsi"
+      kabupaten:
+        "$ref": "#/definitions/Kabupaten"
+      kecamatan:
+        "$ref": "#/definitions/Kecamatan"
+      desa:
+        "$ref": "#/definitions/Desa"
+      alamat:
+        type: string
+      no_hp:
+        type: string
+      email:
+        type: string
+    required:
+    - nik
+    - no_kk
+    - nama
+    - jenis_kelamin
+    - tanggal_lahir
+    - tempat_lahir
+    - gol_darah
+    - provinsi
+    - kabupaten
+    - kecamatan
+    - desa
+    - alamat
+    - no_hp
+    - email
+  Provinsi:
+    title: Provinsi
+    example:
+      kode: 11
+      nama: ACEH
+    type: object
+    properties:
+      kode:
+        type: integer
+        format: int32
+      nama:
+        type: string
+    required:
+    - kode
+    - nama
+  Kabupaten:
+    title: Kabupaten
+    example:
+      kode: 1112
+      nama: ACEH BARAT DAYA
+    type: object
+    properties:
+      kode:
+        type: integer
+        format: int32
+      nama:
+        type: string
+    required:
+    - kode
+    - nama
+  Kecamatan:
+    title: Kecamatan
+    example:
+      kode: 111204
+      nama: SUSOH
+    type: object
+    properties:
+      kode:
+        type: integer
+        format: int32
+      nama:
+        type: string
+    required:
+    - kode
+    - nama
+  Desa:
+    title: Desa
+    example:
+      kode: 111204007
+      nama: RUMAH DUA LAPIS
+    type: object
+    properties:
+      kode:
+        type: integer
+        format: int32
+      nama:
+        type: string
+    required:
+    - kode
+    - nama
+security:
+- bearer: []
+tags:
+- name: Pasien
