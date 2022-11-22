@@ -71,34 +71,67 @@ definitions:
       nama_ibu: "WARNI BILONDATU"
     type: object
     properties:
-      nik:
-        type: string
-      no_kk:
-        type: string
       nama:
         type: string
-      jenis_kelamin:
+      no_mr:
+        type: string
+      no_mr_lama:
+        type: string
+      nik:
+        type: string
+      no_kk: 
+        type: string
+      jenis_kelamin: 
         type: integer
-        format: int32
       tanggal_lahir:
         type: string
       tempat_lahir:
         type: string
       gol_darah:
         type: string
-      provinsi:
+      suku: 
+        type: string
+      bahasa: 
+        type: string
+      id_prov:
         "$ref": "#/definitions/Provinsi"
-      kabupaten:
+      id_kabkota:
         "$ref": "#/definitions/Kabupaten"
-      kecamatan:
+      id_kecamatan:
         "$ref": "#/definitions/Kecamatan"
-      desa:
+      id_desa:
         "$ref": "#/definitions/Desa"
       alamat:
         type: string
+      kdpos:
+        type: string
+      negara:
+        type: string
+      id_provd:
+         "$ref": "#/definitions/Provinsi"
+      id_kabkotad:
+        "$ref": "#/definitions/Kabupaten"
+      id_kecamatand:
+        "$ref": "#/definitions/Kecamatan"
+      id_desad:
+        "$ref": "#/definitions/Desa"
+      alamatd:
+        type: string
+      kdposd:
+        type: string
+      negarad:
+        type: string
+      tlp_rumah:
+        type: string
+      id_jpdd:
+        "$ref": "#/definitions/jpdd"
+      id_pekerjaan:
+        "$ref": "#/definitions/pekerjaan"
       no_hp:
         type: string
-      email:
+      email: 
+        type: string
+      nama_ibu: 
         type: string
     required:
     - nama
@@ -165,6 +198,36 @@ definitions:
     example:
       kode: 111204007
       nama: RUMAH DUA LAPIS
+    type: object
+    properties:
+      kode:
+        type: integer
+        format: int32
+      nama:
+        type: string
+    required:
+    - kode
+    - nama
+  jpdd:
+    title: Jpdd
+    example:
+      kode: 11
+      nama: SD
+    type: object
+    properties:
+      kode:
+        type: integer
+        format: int32
+      nama:
+        type: string
+    required:
+    - kode
+    - nama
+  pekerjaan:
+    title: Pekerjaan
+    example:
+      kode: 11
+      nama: Wiraswasta
     type: object
     properties:
       kode:

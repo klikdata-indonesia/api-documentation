@@ -53,9 +53,10 @@
       "CreatePasien": {
         "title": "Pasien",
         "example": {
-          "nik": "1272072906910002",
+          "nama": "KHAIRIL ANWAR",
+          "no_mr": "001234",
+          "nik": "7502046602070001",
           "no_kk": "-",
-          "nama": "MUHAMMAD FADHLULLAH",
           "jenis_kelamin": 1,
           "tanggal_lahir": "1991-06-29 17:00:00",
           "tempat_lahir": "Tapaktuan",
