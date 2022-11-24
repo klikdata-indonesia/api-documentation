@@ -9,7 +9,7 @@ schemes:
 - http
 - https
 paths:
-  "/pasien":
+  "/Pasien":
     post:
       summary: Create Data Pasien
       tags:
@@ -33,22 +33,137 @@ paths:
       responses:
         '200':
           description: ''
-          headers: {}
+          headers: {
+
+          }
+
+  Pasien/get:
+    get:
+        tags:
+          - Pasien
+        summary: Finds Patient by status
+        description: Multiple status values can be provided with comma separated strings
+        operationId: findPatientByStatus
+        parameters:
+          - name: status
+            in: query
+            description: Status values that need to be considered for filter
+            required: false
+            explode: true
+            schema:
+              type: string
+              default: available
+              enum:
+                - available
+                - pending
+                - sold
+        responses:
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref": "#/definitions/CreatePasien"          
+              application/xml:
+                schema:
+                  type: array
+                  items:
+                    "$ref": "#/definitions/CreatePasien"
+          '400':
+            description: Invalid status value
+        security:
+          - petstore_auth:
+              - write:pets
+              - read:pets
+  "/Pasien/{id_user}":
+    put:
+      tags:
+        - Pasien
+      summary: Update an existing Patient
+      description: Update an existing Patien by Id
+      operationId: updatePet
+      requestBody:
+        description: Update an existent Patien in the store
+        content:
+          application/json:
+            schema:
+              "$ref": "#/definitions/CreatePasien"
+          application/xml:
+            schema:
+              "$ref": "#/definitions/CreatePasien"
+          application/x-www-form-urlencoded:
+            schema:
+              "$ref": "#/definitions/CreatePasien"
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                "$ref": "#/definitions/CreatePasien"          
+            application/xml:
+              schema:
+                "$ref": "#/definitions/CreatePasien"
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+        '405':
+          description: Validation exception
+      security:
+        - petstore_auth:
+            - write:pets
+            - read:pets
 definitions:
   CreatePasien:
     title: Pasien
     example:
-      nama: "KHAIRIL ANWAR"
-      no_mr: "001234"
-      no_mr_lama: "-"
-      nik: '1272072906910002'
-      no_kk: "-"
-      jenis_kelamin: 1
-      tanggal_lahir: '1991-06-29 17:00:00'
-      tempat_lahir: Tapaktuan
+      id_user: 1120120488
+      id_finger: 
+      foto: 
+      tanda_tangan: 
+      no_mr: 112233
+      no_mr_lama: 111122
+      kode_dpjp:
+      gelar_dpn:
+      nama_user: KHAIRIL ANWAR
+      gelar_blk: S.Kom
+      id_shift:
+      tmp_lhr: GORONTALO
+      tgl_lhr: 1980-12-29
+      id_jk: 1
+      id_kawin: 1
+      id_agama: 1
       gol_darah: O
-      suku: GORONTALO
-      bahasa: INDONESIA
+      berat_lahir: 
+      id_jpdd: 1
+      id_prodi: 1
+      id_pekerjaan: 1
+      id_pekerjaan_sts: 
+      id_kantor: 
+      id_grupsdm: 
+      tarif_konsul: 
+      sts_tarif_dikelola_dokter: 
+      ket_spesialisasi: 
+      no_sip: 
+      id_ruangan: 
+      tmt_cpns: 
+      tmt_pns: 
+      nip: 
+      no_karpeg: 
+      npwp: 
+      jenis_identitas: 1
+      no_identitas: 7502046602070001
+      no_kk: 750360111222244
+      no_hp: +6282349782444
+      email: khairilanwarkarim@gmail.com
+      grup_user: 1
+      sts_user: 1
+      sts_difabel: 
+      sts_prioritas: 
       id_prov: 75
       id_kabkota: 7502
       id_kecamatan: 750211
@@ -64,11 +179,25 @@ definitions:
       kdposd: 86524
       negarad: INDONESIA
       tlp_rumah: "+620435787878"
-      id_jpdd: S1
-      id_pekerjaan: 1022
-      no_hp: "+6282290012005"
-      email: zulfahmii051@gmail.com
       nama_ibu: "WARNI BILONDATU"
+      id_kelp_sdm: 
+      nip_lama: 
+      cuti_tahunan:
+      tmt_pensiun: 
+      sts_allowed_credit: 
+      riwayat_alergi_obat: 
+      riwayat_alergi_makanan: 
+      idcardprinted: 
+      idcardtaked: 
+      idcardpaid: 
+      idcardexpired: 
+      date_registered: 
+      user_registered: 
+      date_modified: 
+      user_modified: 
+      isdefault: 
+      password:
+      sts_update: 
     type: object
     properties:
       nama:
@@ -81,6 +210,8 @@ definitions:
         type: string
       no_kk: 
         type: string
+      id_agama:
+        "$ref": "#/definitions/Agama"
       jenis_kelamin: 
         type: integer
       tanggal_lahir:
@@ -148,6 +279,21 @@ definitions:
     - alamat
     - no_hp
     - email
+  Agama:
+    title: Agama
+    example:
+      id_agama: 1
+      ket_agama: Islam
+    type: object
+    properties:
+      id_agama:
+        type: integer
+        format: int32
+      ket_agama:
+        type: string
+    required:
+    - kode
+    - nama  
   Provinsi:
     title: Provinsi
     example:
